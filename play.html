@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="play.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div class="content">
+    <div class="webplayer_wrapper">
+      <div class="btn_start_wrapper">
+        <button id="startBtn" class="btn_start" onclick="on_start()">开始游戏</button>
+      </div>
+      <canvas class="webplayer" id="canvas" tabindex="1" width="800" height="600" oncontextmenu="event.preventDefault()"
+        style="background-color: black;"></canvas>
+    </div>
+  </div>
+
+
+  <div class="modal_archive">
+    <div class="modal_archive_title">我的存档</div>
+    <div id="archiveList" class="archive_list">
+
+      <!-- <div class="archive_item">
+        <div class="archive_item_num">1</div>
+        <img class="archive_item_preview" src="">
+        <div class="archive_item_info">
+          <div>存档时间<br><span>2022-07-01 12:00:00</span></div>
+
+          <div class="archive_item_opera">
+            <button onclick="on_loadState()">读取</button>
+            <button onclick="on_saveState()">覆盖</button>
+          </div>
+        </div>
+      </div> -->
+
+      <button class="btn_new_archive" onclick="on_saveState()">新建存档</button>
+    </div>
+  </div>
+
+
+  <div class="modal_operation">
+    <div class="timer_show">12:00:00</div>
+
+    <button class="btn" onclick="on_pause()">暂停游戏</button>
+
+    <button class="btn" onclick="on_resume()">继续游戏</button>
+
+    <div class="cheat_wrapper">
+      <button class="btn" onclick="on_openCheat()">金手指</button>
+      <div id="cheatModal" class="modal_cheats">
+        <div id="cheatsCont" class="modal_cheats_cont"></div>
+      </div>
+    </div>
+
+
+    <button class="btn">游戏截图</button>
+
+    <button class="btn">关闭游戏声音</button>
+
+  </div>
+
+
+  <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src="./browserfs.min.js"></script>
+  <script src="./DBUtil.js"></script>
+  <script src="./emu.js"></script>
+
+  <script>
+    window.addEventListener('beforeunload', function (e) {
+      e.preventDefault(); // 取消事件
+      e.returnValue = ''; // Chrome 需要 returnValue 被设置
+      var confirmationMessage = '确定要离开该页面吗？'; // 弹出确认框
+      (e || window.event).returnValue = confirmationMessage; // 兼容 Gecko 和 Trident
+      return confirmationMessage;
+    });
+  </script>
+</body>
+
+</html>

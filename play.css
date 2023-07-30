@@ -1,0 +1,536 @@
+body {
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.content {
+  width: 100vw;
+  height: 100vh;
+  min-height: 600px;
+  text-align: center;
+  background: radial-gradient(circle at 60% 90%, #2e67a1, transparent 60%), radial-gradient(circle at 20px 20px, rgba(46, 103, 161, .8), transparent 25%), #182336;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 300px;
+  box-sizing: border-box;
+  min-width: calc(800px + 320px + 320px + 20px);
+}
+
+
+.webplayer_wrapper {
+  position: relative;
+}
+
+.webplayer_wrapper>.btn_start_wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn_start_wrapper>.btn_start {
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #35a2fd;
+  cursor: pointer;
+  display: flex;
+  font-size: 24px;
+  height: 48px;
+  justify-content: center;
+  position: relative;
+  width: 160px;
+}
+
+.btn_start_wrapper>.btn_start:hover {
+  border: 1px solid #35a2fd;
+  box-shadow: 0 10px 10px -10px #35a2fd;
+}
+
+.btn_start_wrapper>.btn_start::after {
+  background-color: transparent;
+  box-sizing: border-box;
+  -webkit-clip-path: inset(50% 50% 50% 50%);
+  clip-path: inset(50% 50% 50% 50%);
+  content: "Button";
+  font-size: 24px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.btn_start_wrapper>.btn_start:hover::after {
+  -webkit-animation: PunkEffectButton2_glitch__QuNxs 1s;
+  animation: PunkEffectButton2_glitch__QuNxs 1s;
+  -webkit-animation-timing-function: steps(2);
+  animation-timing-function: steps(2);
+  background-color: transparent;
+  border: 3px solid #35a2fd;
+  text-shadow: 10 10px 10px #000;
+  text-shadow: -3px -3px 0 #35a2fd, 3px 3px 0 #e94be8;
+}
+
+
+.webplayer_wrapper>canvas {
+  vertical-align: middle;
+}
+
+#gameCanvas {
+  background-color: bisque;
+}
+
+.opera_bar {
+  display: flex;
+}
+
+.opera_bar>button {
+  margin: 0 10px;
+}
+
+.modal_archive {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100vh;
+  z-index: 2;
+  box-shadow: 0 2px 2px rgba(53, 162, 253, .267);
+  background-image: linear-gradient(90deg, #04182c, #000c17, #04182c);
+
+  /* background-color: rgba(0,12,23,.867); */
+  /* border: 3px solid rgba(53,162,253,.267); */
+}
+
+.modal_archive>.modal_archive_title {
+  /* background-color: rgb(117, 117, 117); */
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 24px;
+  color: white;
+  border-bottom: 1px solid rgb(56, 56, 56);
+}
+
+.modal_archive>.archive_list {
+  width: 100%;
+  height: calc(100vh - 50px);
+  overflow-y: auto;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.archive_list>.archive_item {
+  margin: 10px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 3px solid rgba(53, 162, 253, .267);
+  border-radius: 8px;
+  position: relative;
+}
+
+
+.archive_item>.archive_item_num {
+  position: absolute;
+  left: -8px;
+  top: -8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #35a2fd;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  z-index: 10;
+}
+
+.archive_item>.archive_item_preview {
+  width: 120px;
+  height: 100%;
+  background-color: gray;
+}
+
+.archive_item>.archive_item_info {
+  flex: 1;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  color: gray;
+  margin-left: 10px;
+}
+
+.archive_item_info>div {
+  text-align: center;
+}
+
+.archive_item_info>div>span {
+  font-size: 12px;
+}
+
+.archive_item_info>.archive_item_opera>button {
+  margin-top: 4px;
+  align-items: center;
+  background-color: #35a2fd;
+  border: 0 !important;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  height: 28px;
+  justify-content: center;
+  width: 48%;
+  display: inline-block;
+}
+
+.archive_list>.btn_new_archive {
+  align-items: center;
+  background-color: #35a2fd;
+  border: 0 !important;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-size: 20px;
+  height: 48px;
+  justify-content: center;
+  width: calc(100% - 20px);
+  margin: auto;
+}
+
+
+.modal_operation {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  z-index: 2;
+  box-shadow: 0 -2px 2px rgba(53, 162, 253, .267);
+  background-image: linear-gradient(90deg, #04182c, #000c17, #04182c);
+}
+
+.modal_operation>.timer_show {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 24px;
+  color: white;
+  border-bottom: 1px solid rgb(56, 56, 56);
+}
+
+.modal_operation .btn {
+  align-items: center;
+  background-color: #35a2fd;
+  border: 0 !important;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-size: 20px;
+  height: 48px;
+  justify-content: center;
+  width: calc(100% - 20px);
+  margin: 18px auto;
+}
+
+@-webkit-keyframes PunkEffectButton2_glitch__QuNxs {
+  0% {
+    -webkit-clip-path: inset(50% 50% 50% 50%);
+    clip-path: inset(50% 50% 50% 50%);
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px)
+  }
+
+  10% {
+    -webkit-clip-path: inset(31% 0 40% 0);
+    clip-path: inset(31% 0 40% 0);
+    -webkit-transform: translate(-10px, 10px);
+    transform: translate(-10px, 10px)
+  }
+
+  20% {
+    -webkit-clip-path: inset(39% 0 15% 0);
+    clip-path: inset(39% 0 15% 0);
+    -webkit-transform: translate(10px);
+    transform: translate(10px)
+  }
+
+  30% {
+    -webkit-clip-path: inset(45% 0 40% 0);
+    clip-path: inset(45% 0 40% 0);
+    -webkit-transform: translate(-10px, 10px);
+    transform: translate(-10px, 10px)
+  }
+
+  40% {
+    -webkit-clip-path: inset(45% 0 6% 0);
+    clip-path: inset(45% 0 6% 0);
+    -webkit-transform: translate(10px, -10px);
+    transform: translate(10px, -10px)
+  }
+
+  50% {
+    -webkit-clip-path: inset(14% 0 61% 0);
+    clip-path: inset(14% 0 61% 0);
+    -webkit-transform: translate(-10px, 10px);
+    transform: translate(-10px, 10px)
+  }
+
+  60% {
+    -webkit-clip-path: inset(50% 50% 50% 50%);
+    clip-path: inset(50% 50% 50% 50%);
+    -webkit-transform: translate(10px, -10px);
+    transform: translate(10px, -10px)
+  }
+
+  70% {
+    -webkit-clip-path: inset(39% 0 15% 0);
+    clip-path: inset(39% 0 15% 0);
+    -webkit-transform: translate(-10px, 10px);
+    transform: translate(-10px, 10px)
+  }
+
+  80% {
+    -webkit-clip-path: inset(31% 0 40% 0);
+    clip-path: inset(31% 0 40% 0);
+    -webkit-transform: translate(10px, -10px);
+    transform: translate(10px, -10px)
+  }
+
+  90% {
+    -webkit-clip-path: inset(45% 0 40% 0);
+    clip-path: inset(45% 0 40% 0);
+    -webkit-transform: translate(-10px, 10px);
+    transform: translate(-10px, 10px)
+  }
+
+  to {
+    -webkit-clip-path: inset(50% 50% 50% 50%);
+    clip-path: inset(50% 50% 50% 50%);
+    -webkit-transform: translate(0);
+    transform: translate(0)
+  }
+}
+
+@keyframes PunkEffectButton2_glitch__QuNxs {
+  0% {
+    -webkit-clip-path: inset(50% 50% 50% 50%);
+    clip-path: inset(50% 50% 50% 50%);
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px)
+  }
+
+  10% {
+    -webkit-clip-path: inset(31% 0 40% 0);
+    clip-path: inset(31% 0 40% 0);
+    -webkit-transform: translate(-10px, 10px);
+    transform: translate(-10px, 10px)
+  }
+
+  20% {
+    -webkit-clip-path: inset(39% 0 15% 0);
+    clip-path: inset(39% 0 15% 0);
+    -webkit-transform: translate(10px);
+    transform: translate(10px)
+  }
+
+  30% {
+    -webkit-clip-path: inset(45% 0 40% 0);
+    clip-path: inset(45% 0 40% 0);
+    -webkit-transform: translate(-10px, 10px);
+    transform: translate(-10px, 10px)
+  }
+
+  40% {
+    -webkit-clip-path: inset(45% 0 6% 0);
+    clip-path: inset(45% 0 6% 0);
+    -webkit-transform: translate(10px, -10px);
+    transform: translate(10px, -10px)
+  }
+
+  50% {
+    -webkit-clip-path: inset(14% 0 61% 0);
+    clip-path: inset(14% 0 61% 0);
+    -webkit-transform: translate(-10px, 10px);
+    transform: translate(-10px, 10px)
+  }
+
+  60% {
+    -webkit-clip-path: inset(50% 50% 50% 50%);
+    clip-path: inset(50% 50% 50% 50%);
+    -webkit-transform: translate(10px, -10px);
+    transform: translate(10px, -10px)
+  }
+
+  70% {
+    -webkit-clip-path: inset(39% 0 15% 0);
+    clip-path: inset(39% 0 15% 0);
+    -webkit-transform: translate(-10px, 10px);
+    transform: translate(-10px, 10px)
+  }
+
+  80% {
+    -webkit-clip-path: inset(31% 0 40% 0);
+    clip-path: inset(31% 0 40% 0);
+    -webkit-transform: translate(10px, -10px);
+    transform: translate(10px, -10px)
+  }
+
+  90% {
+    -webkit-clip-path: inset(45% 0 40% 0);
+    clip-path: inset(45% 0 40% 0);
+    -webkit-transform: translate(-10px, 10px);
+    transform: translate(-10px, 10px)
+  }
+
+  to {
+    -webkit-clip-path: inset(50% 50% 50% 50%);
+    clip-path: inset(50% 50% 50% 50%);
+    -webkit-transform: translate(0);
+    transform: translate(0)
+  }
+}
+
+.cheat_wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.modal_cheats {
+  width: 0;
+  height: 300px;
+  overflow: hidden;
+  background-color: rgba(0, 12, 23, .867);
+  border: 2px solid rgba(53, 162, 253, .267);
+  box-shadow: 0 0 2px rgba(53, 162, 253, .267);
+  position: absolute;
+  right: calc(100% + 4px);
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.modal_cheats.show {
+  opacity: 1;
+  width: 240px;
+}
+
+.modal_cheats>.modal_cheats_cont {
+  width: 240px;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.modal_cheats_cont>.cheat_item {
+  width: 100%;
+  padding: 4px 20px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: white;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.cheat_item:hover {
+  background-color: rgba(53, 162, 253, .267);
+}
+
+
+.switch_container {
+  width: 76px;
+  height: 34px;
+  border-radius: 17px;
+  background-color: rgb(26, 28, 32);
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.switch_container>.switch_box {
+  width: 6.8px;
+  height: 23.8px;
+  border-radius: 3.4px;
+  top: 5.1px;
+  left: 59px;
+
+  background-color: #355dff;
+  overflow: hidden;
+  position: absolute;
+  transition: all .4s;
+}
+
+
+.switch_container>.switch_icon {
+  width: 27.2px;
+  height: 27.2px;
+  top: 3.4px;
+  left: 3.4px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  transition: all .4s;
+}
+
+.switch_icon.off {
+  left: 3.4px;
+  opacity: 1;
+}
+
+.switch_icon.on {
+  left: 45.4px;
+  opacity: 0;
+}
+
+.switch_container>.switch_icon>span {
+  color: rgb(255, 255, 255);
+  margin-left: 4px;
+}
+
+.switch_container>.switch_input {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.switch_input:checked~.switch_box {
+  width: 27.2px;
+  height: 27.2px;
+  border-radius: 50%;
+  top: 3.4px;
+  left: 3.4px;
+}
+
+.switch_input:checked~.off {
+  opacity: 0;
+}
+
+.switch_input:checked~.on {
+  opacity: 1;
+}

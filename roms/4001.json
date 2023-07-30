@@ -1,0 +1,10 @@
+{
+  "name": "超级马里奥",
+  "file": "4001.zip",
+  "platform": "nes",
+  "core": "fceumm",
+  "cheat": {
+    "cheatFolder": "FCEUmm",
+    "data": "075A:09$无限生命,07FA:09$无限时间,0754:00+0756:01$人物变大"
+  }
+}
