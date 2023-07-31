@@ -40,15 +40,19 @@
 
       <button class="btn_new_archive" onclick="on_saveState()">新建存档</button>
     </div>
+    <div id="archiveListMock" class="archive_list_mock">
+      <div>
+        <img src="./icon_loading.png">
+        <span>正在存档...</span>
+      </div>
+    </div>
   </div>
 
 
   <div class="modal_operation">
     <div class="timer_show">12:00:00</div>
 
-    <button class="btn" onclick="on_pause()">暂停游戏</button>
-
-    <button class="btn" onclick="on_resume()">继续游戏</button>
+    <button id="btnGameResume" class="btn" onclick="on_pause_resume()">暂停游戏</button>
 
     <div class="cheat_wrapper">
       <button class="btn" onclick="on_openCheat()">金手指</button>
@@ -57,10 +61,7 @@
       </div>
     </div>
 
-
-    <button class="btn">游戏截图</button>
-
-    <button class="btn">关闭游戏声音</button>
+    <button class="btn" onclick="on_screenshot()">游戏截图</button>
 
   </div>
 

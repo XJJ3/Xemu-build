@@ -1,0 +1,33 @@
+[{
+    "id": 1001,
+    "name": "火焰纹章之圣战系谱(简体中文)",
+    "img": "./assets/gameImg/1001.png"
+  }, {
+    "id": 2001,
+    "name": "勇者斗恶龙 怪兽仙境（汉化版）",
+    "img": "./assets/gameImg/2001.png"
+  }, {
+    "id": 3001,
+    "name": "星之卡比-镜之大迷宫（简体汉化版）",
+    "img": "./assets/gameImg/3001.png"
+  },
+  {
+    "id": 3002,
+    "name": "口袋妖怪-绿宝石（简体汉化版）",
+    "img": "./assets/gameImg/3002.png"
+  },
+  {
+    "id": 3003,
+    "name": "牧场物语 矿石镇的伙伴们",
+    "img": "./assets/gameImg/3003.png"
+  },
+  {
+    "id": 3004,
+    "name": "火焰纹章 圣邪的意志",
+    "img": "./assets/gameImg/3004.png"
+  }, {
+    "id": 4001,
+    "name": "超级马里奥",
+    "img": "./assets/gameImg/4001.png"
+  }
+]

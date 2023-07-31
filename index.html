@@ -2,15 +2,51 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xxx</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xemu</title>
+  <link href="index.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <div>再次测试</div>
-    <script src="dbUtil.js"></script>
-    <script src="emu.js"></script>
+
+  <div class="root">
+    <div class="header">
+      <img class="logo" src="./logo.svg">
+      <span>偶尔回味童年的快乐</span>
+    </div>
+
+    <div id="gameList" class="games_list">
+
+    </div>
+
+    <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script>
+      fetch("./roms/list.json")
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if (data && data.length > 0) {
+            const wrapper = document.getElementById("gameList");
+            data.forEach(game => {
+              $("#gameList").append(`
+              <a href="/play.html?id=${game.id}" target="_blank">
+                <div class="game_item">
+                  <img src="${game.img}">
+                  <div class="game_name">${game.name}</dv>
+                  </div>
+                </div>
+              </a>
+              
+              `);
+            });
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    </script>
+
 </body>
 
 </html>
