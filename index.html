@@ -47,105 +47,105 @@
           console.error("Error:", error);
         });
 
-      // 建立PeerConnection
-      const peerConnection = new RTCPeerConnection();
+      // // 建立PeerConnection
+      // const peerConnection = new RTCPeerConnection();
 
-      function connection() {
-        // 打开DataChannel
-        const dataChannel = peerConnection.createDataChannel('testChannel');
+      // function connection() {
+      //   // 打开DataChannel
+      //   const dataChannel = peerConnection.createDataChannel('testChannel');
 
-        dataChannel.onopen = () => {
-          console.log('DataChannel已打开');
-          dataChannel.send("12123131");
-        }
+      //   dataChannel.onopen = () => {
+      //     console.log('DataChannel已打开');
+      //     dataChannel.send("12123131");
+      //   }
 
-        dataChannel.onmessage = (msgEvent) => {
-          console.log(msgEvent);
-        }
+      //   dataChannel.onmessage = (msgEvent) => {
+      //     console.log(msgEvent);
+      //   }
 
-        dataChannel.onerror = (err) => {
-          console.error(err);
-        }
-
-
-        // 创建Offer并发送给Browser B
-        peerConnection.createOffer().then(offer => {
-            return peerConnection.setLocalDescription(offer);
-          }).then(function () {
-            // wait for ICE gathering to complete
-            return new Promise(function (resolve) {
-              if (peerConnection.iceGatheringState === 'complete') {
-                resolve();
-              } else {
-                function checkState() {
-                  if (peerConnection.iceGatheringState === 'complete') {
-                    peerConnection.removeEventListener('icegatheringstatechange', checkState);
-                    resolve();
-                  }
-                }
-                peerConnection.addEventListener('icegatheringstatechange', checkState);
-              }
-            });
-          })
-          .then(function () {
-            let offer = peerConnection.localDescription;
-            console.log(offer);
-
-            setSDP(offer);
-
-            window.setTimeout(() => {
-              getSDP()
-            }, 1000)
-          });
-
-        // 监听ICE候选地址
-        peerConnection.addEventListener('icecandidate', event => {
-          // 将ICE候选地址发送给Browser B
-          // 可以使用WebSocket、XHR或其他任何方式发送
-          console.log(event);
-        });
-
-        peerConnection.addEventListener('connectionstatechange', () => {
-          console.log(peerConnection.connectionState);
-        });
-      }
-
-      connection();
+      //   dataChannel.onerror = (err) => {
+      //     console.error(err);
+      //   }
 
 
+      //   // 创建Offer并发送给Browser B
+      //   peerConnection.createOffer().then(offer => {
+      //       return peerConnection.setLocalDescription(offer);
+      //     }).then(function () {
+      //       // wait for ICE gathering to complete
+      //       return new Promise(function (resolve) {
+      //         if (peerConnection.iceGatheringState === 'complete') {
+      //           resolve();
+      //         } else {
+      //           function checkState() {
+      //             if (peerConnection.iceGatheringState === 'complete') {
+      //               peerConnection.removeEventListener('icegatheringstatechange', checkState);
+      //               resolve();
+      //             }
+      //           }
+      //           peerConnection.addEventListener('icegatheringstatechange', checkState);
+      //         }
+      //       });
+      //     })
+      //     .then(function () {
+      //       let offer = peerConnection.localDescription;
+      //       console.log(offer);
 
-      function getSDP() {
-        fetch("https://integral-elk-36758.kv.vercel-storage.com/get/sdp_answer_key_111", {
-            headers: {
-              Authorization: "Bearer AY-WASQgOWE2YjU1ZWMtYmU3NS00NTc2LWFjYjItNTM3NDA1ZTVhODUyN2I4ODVmMDk0MzgzNDE0OTkxZTRlMzcwY2VlMDAwYjQ="
-            }
-          }).then(response => response.json())
-          .then(data => {
-            console.log(data)
-            if (!data.result) {
-              window.setTimeout(() => {
-                getSDP()
-              }, 3000)
-            } else {
-              console.log(console.log("拿到 answer sdp", data.result));
-              const answer = JSON.parse(data.result);
-              peerConnection.setRemoteDescription(answer);
-            }
-          });
-      }
+      //       setSDP(offer);
+
+      //       window.setTimeout(() => {
+      //         getSDP()
+      //       }, 1000)
+      //     });
+
+      //   // 监听ICE候选地址
+      //   peerConnection.addEventListener('icecandidate', event => {
+      //     // 将ICE候选地址发送给Browser B
+      //     // 可以使用WebSocket、XHR或其他任何方式发送
+      //     console.log(event);
+      //   });
+
+      //   peerConnection.addEventListener('connectionstatechange', () => {
+      //     console.log(peerConnection.connectionState);
+      //   });
+      // }
+
+      // connection();
 
 
-      function setSDP(sdp) {
-        return fetch(`https://integral-elk-36758.kv.vercel-storage.com/set/sdp_offer_key_111`, {
-            headers: {
-              Authorization: `Bearer AY-WASQgOWE2YjU1ZWMtYmU3NS00NTc2LWFjYjItNTM3NDA1ZTVhODUyN2I4ODVmMDk0MzgzNDE0OTkxZTRlMzcwY2VlMDAwYjQ=`,
-            },
-            body: JSON.stringify(sdp),
-            method: 'POST',
-          })
-          .then((response) => response.json())
-          .then((data) => console.log(data));
-      }
+
+      // function getSDP() {
+      //   fetch("https://integral-elk-36758.kv.vercel-storage.com/get/sdp_answer_key_111", {
+      //       headers: {
+      //         Authorization: "Bearer AY-WASQgOWE2YjU1ZWMtYmU3NS00NTc2LWFjYjItNTM3NDA1ZTVhODUyN2I4ODVmMDk0MzgzNDE0OTkxZTRlMzcwY2VlMDAwYjQ="
+      //       }
+      //     }).then(response => response.json())
+      //     .then(data => {
+      //       console.log(data)
+      //       if (!data.result) {
+      //         window.setTimeout(() => {
+      //           getSDP()
+      //         }, 3000)
+      //       } else {
+      //         console.log(console.log("拿到 answer sdp", data.result));
+      //         const answer = JSON.parse(data.result);
+      //         peerConnection.setRemoteDescription(answer);
+      //       }
+      //     });
+      // }
+
+
+      // function setSDP(sdp) {
+      //   return fetch(`https://integral-elk-36758.kv.vercel-storage.com/set/sdp_offer_key_111`, {
+      //       headers: {
+      //         Authorization: `Bearer AY-WASQgOWE2YjU1ZWMtYmU3NS00NTc2LWFjYjItNTM3NDA1ZTVhODUyN2I4ODVmMDk0MzgzNDE0OTkxZTRlMzcwY2VlMDAwYjQ=`,
+      //       },
+      //       body: JSON.stringify(sdp),
+      //       method: 'POST',
+      //     })
+      //     .then((response) => response.json())
+      //     .then((data) => console.log(data));
+      // }
     </script>
 
 </body>
