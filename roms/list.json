@@ -29,5 +29,24 @@
     "id": 4001,
     "name": "超级马里奥",
     "img": "./assets/gameImg/4001.png"
+  }, {
+    "id": 4002,
+    "name": "坦克大战",
+    "img": "./assets/gameImg/4002.png"
+  },
+  {
+    "id": 4003,
+    "name": "魂斗罗",
+    "img": "./assets/gameImg/4003.png"
+  },
+  {
+    "id": 4004,
+    "name": "赤色要塞",
+    "img": "./assets/gameImg/4004.png"
+  },
+  {
+    "id": 4005,
+    "name": "冒险岛",
+    "img": "./assets/gameImg/4005.png"
   }
 ]
