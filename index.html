@@ -22,7 +22,10 @@
 
 
     <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="./socket.io.min.js"></script>
     <script>
+      const socket = io(); // io 将注册为全局变量
+
       fetch("./roms/list.json")
         .then((response) => response.json())
         .then((data) => {

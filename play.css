@@ -121,15 +121,24 @@ body {
   border-bottom: 1px solid rgb(56, 56, 56);
 }
 
+.modal_archive>.auto_archive {
+  width: 100%;
+  min-height: 120px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(56, 56, 56);
+  border-top: 1px solid rgb(56, 56, 56);
+}
+
 .modal_archive>.archive_list {
   width: 100%;
   height: calc(100vh - 50px);
   overflow-y: auto;
   padding-bottom: 20px;
   box-sizing: border-box;
+  transition: all 0.3s;
 }
 
-.archive_list>.archive_item {
+.archive_item {
   margin: 10px;
   height: 100px;
   display: flex;
@@ -180,6 +189,10 @@ body {
   font-size: 12px;
 }
 
+.archive_item_info>.archive_item_opera {
+  position: relative;
+}
+
 .archive_item_info>.archive_item_opera>button {
   margin-top: 4px;
   align-items: center;
@@ -196,6 +209,57 @@ body {
   display: inline-block;
 }
 
+.archive_item_info>.archive_item_opera>.sure_cover_tip {
+  /* background-color: rgba(0, 0, 0, 0.95); */
+  background-image: linear-gradient(90deg, #04182c, #000c17, #04182c);
+  border: 1px solid rgba(53, 162, 253, .267);
+  width: max-content;
+
+  position: absolute;
+  top: -65px;
+  left: -21px;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  border-radius: 6px;
+  z-index: 999;
+
+  opacity: 0;
+  width: 0;
+}
+
+.archive_item_info>.archive_item_opera>.sure_cover_tip::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 10px solid #04182c;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  position: absolute;
+  bottom: -19px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.sure_cover_tip>.sure_cover_tip_btn {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  margin-top: 8px;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+}
+
+.sure_cover_tip>.sure_cover_tip_btn>span {
+  color: #35a2fd;
+  font-size: 12px;
+  cursor: pointer;
+}
+
 .archive_list>.btn_new_archive {
   align-items: center;
   background-color: #35a2fd;
@@ -208,7 +272,7 @@ body {
   height: 48px;
   justify-content: center;
   width: calc(100% - 20px);
-  margin: auto;
+  margin: 10px auto;
 }
 
 
@@ -584,4 +648,22 @@ body {
 
 .switch_input:checked~.on {
   opacity: 1;
+}
+
+
+.msg-tip {
+  width: max-content;
+  font-size: 16px;
+  color: white;
+  background: linear-gradient(90deg, #04182c, #000c17, #04182c);
+  box-shadow: 0 -2px 2px rgba(46, 143, 222, 0.267);
+  position: fixed;
+  top: -50px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 8px 10px;
+  border-radius: 8px;
+
+  transition: top 0.3s;
 }

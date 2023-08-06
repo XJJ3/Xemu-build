@@ -23,6 +23,9 @@
 
   <div class="modal_archive">
     <div class="modal_archive_title">我的存档</div>
+
+
+
     <div id="archiveList" class="archive_list">
 
       <!-- <div class="archive_item">
@@ -32,14 +35,17 @@
           <div>存档时间<br><span>2022-07-01 12:00:00</span></div>
 
           <div class="archive_item_opera">
-            <button onclick="on_loadState()">读取</button>
             <button onclick="on_saveState()">覆盖</button>
+            <button onclick="on_loadState()">读取</button>
           </div>
         </div>
       </div> -->
 
-      <button class="btn_new_archive" onclick="on_saveState()">新建存档</button>
+      <!-- <button class="btn_new_archive" onclick="on_saveState()">新建存档</button> -->
     </div>
+
+    <!-- <div id="autoArchive" class="auto_archive"></div> -->
+
     <div id="archiveListMock" class="archive_list_mock">
       <div>
         <img src="./assets/icon_loading.png">
@@ -64,6 +70,8 @@
     <button class="btn" onclick="on_screenshot()">游戏截图</button>
 
   </div>
+
+  <div id="msgTip" class="msg-tip">你好啊</div>
 
 
   <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
