@@ -213,7 +213,7 @@ body {
   /* background-color: rgba(0, 0, 0, 0.95); */
   background-image: linear-gradient(90deg, #04182c, #000c17, #04182c);
   border: 1px solid rgba(53, 162, 253, .267);
-  width: max-content;
+  /* width: max-content; */
 
   position: absolute;
   top: -65px;
@@ -226,9 +226,12 @@ body {
 
   opacity: 0;
   width: 0;
+  height: 0;
+
+  overflow: hidden;
 }
 
-.archive_item_info>.archive_item_opera>.sure_cover_tip::after {
+/* .archive_item_info>.archive_item_opera>.sure_cover_tip::after {
   content: '';
   width: 0;
   height: 0;
@@ -241,7 +244,7 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-}
+} */
 
 .sure_cover_tip>.sure_cover_tip_btn {
   display: flex;
