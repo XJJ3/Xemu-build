@@ -11,7 +11,7 @@
 <body>
 
   <div class="root">
-    <div class="header">
+    <div class="header" onclick="test()">
       <img class="logo" src="./assets/logo.svg">
       <span>偶尔回味童年的快乐</span>
     </div>
@@ -21,9 +21,28 @@
 
 
     <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
-    <!-- <script src="./socket.io.min.js"></script> -->
+    <script src="https://cdn.ably.com/lib/ably.min-1.js"></script>
     <script>
-      // const socket = io(); // io 将注册为全局变量
+      var ably = new Ably.Realtime('p-nGpg.CL7i1w:6d5NYf2w4HaXImwCzahVLelBw0qA03NcUGEDCG8aZJs');
+      var channel = ably.channels.get('quickstart');
+
+      // Publish a message to the channel1 channel
+      // channel.publish('greeting', 'hello');
+
+      function test() {
+        channel.publish('greeting', 'hello');
+        console.log("111")
+      }
+
+      async function init() {
+        await channel.subscribe('greeting', (message) => {
+          console.log('Received a greeting message in realtime: ' + message.data)
+        });
+      }
+
+      init();
+
+
 
       fetch("./roms/list.json")
         .then((response) => response.json())
@@ -40,7 +59,6 @@
                   </div>
                 </div>
               </a>
-              
               `);
             });
           }
