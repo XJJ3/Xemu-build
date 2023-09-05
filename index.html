@@ -21,26 +21,26 @@
 
 
     <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script src="https://cdn.ably.com/lib/ably.min-1.js"></script>
+    <!-- <script src="https://cdn.ably.com/lib/ably.min-1.js"></script> -->
     <script>
-      var ably = new Ably.Realtime('p-nGpg.CL7i1w:6d5NYf2w4HaXImwCzahVLelBw0qA03NcUGEDCG8aZJs');
-      var channel = ably.channels.get('quickstart');
+      // var ably = new Ably.Realtime('p-nGpg.CL7i1w:6d5NYf2w4HaXImwCzahVLelBw0qA03NcUGEDCG8aZJs');
+      // var channel = ably.channels.get('quickstart');
 
       // Publish a message to the channel1 channel
       // channel.publish('greeting', 'hello');
 
-      function test() {
-        channel.publish('greeting', 'hello');
-        console.log("111")
-      }
+      // function test() {
+      //   channel.publish('greeting', 'hello');
+      //   console.log("111")
+      // }
 
-      async function init() {
-        await channel.subscribe('greeting', (message) => {
-          console.log('Received a greeting message in realtime: ' + message.data)
-        });
-      }
+      // async function init() {
+      //   await channel.subscribe('greeting', (message) => {
+      //     console.log('Received a greeting message in realtime: ' + message.data)
+      //   });
+      // }
 
-      init();
+      // init();
 
 
 
